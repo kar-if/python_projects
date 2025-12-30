@@ -12,7 +12,10 @@ def get_pokemon_info(name):
     else:
         print(f"Failed to retrieve data {response.status_code}")
 
-pokemon_name = "typhlosion"
+pokemon_input = input("Which Pokemon would you like to search? ").capitalize()
+
+
+pokemon_name = pokemon_input
 pokemon_info = get_pokemon_info(pokemon_name)
 
 if pokemon_info:
