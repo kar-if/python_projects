@@ -1,5 +1,6 @@
 import requests, random
 base_url = "https://pokeapi.co/api/v2/"
+pokemon_list = []
 
 def get_pokemon_info(pokemon_id):
     url = f"{base_url}/pokemon/{pokemon_id}"
@@ -23,7 +24,9 @@ for poke_id in random_ids:
         print(f"Height: {pokemon_info["height"]}")
         print(f"Weight: {pokemon_info["weight"]}")
 
-pokemon_input = input("Would you like to 1. Search or 2. Trade Pokemon? ").lower()
+        pokemon_list.append(pokemon_info)
+
+pokemon_input = input("Would you like to 1) Search or 2) Trade Pokemon? ").lower()
 
 if pokemon_input == "1":
     poke_search = input("Which Pokemon would you like to search? ")
@@ -48,5 +51,11 @@ for poke_id in random_ids:
             print(f"ID: {pokemon_info["id"]}")
             print(f"Height: {pokemon_info["height"]}")
             print(f"Weight: {pokemon_info["weight"]}")
+
+    poke_trade = input("Which of your Pokemon would you like to trade? ").lower()
+    pokemon_list.remove(poke_trade)
+
+
+    #input(f'Which Pokemon are you trading {poke_trade} for? ')
 else:
     print("Invalid input")
